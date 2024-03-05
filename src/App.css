@@ -1,6 +1,11 @@
 #card{
   height: 150px;
 }
+
+#add_note{
+  width: 600px;
+  margin: 30px;
+}
 @media  screen and (min-width:1100px ){
   #note{
     display: flex;
@@ -29,3 +34,4 @@
     justify-content: center
   };
 }
+

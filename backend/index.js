@@ -1,14 +1,17 @@
 const connectToMongo=require('./db')
 const express = require('express')
-const app = express()
 const port = 5000
+const app = express()
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const fetchuser=require('./middleware/fetchuser')
-
+const cors=require('cors')
 // Use cookie-parser middleware to handle cookies
 app.use(cookieParser());
 
+app.use(cors())
+
+app.use(express.json())
 // Set up express-session middleware
 app.use(session({
     secret: 'your-secret-key',  // Replace with a secret key
