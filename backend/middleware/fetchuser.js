@@ -1,12 +1,10 @@
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const User = require('../models/User')
 
 
 // In fetchuser.js
 const fetchuser = async (req, res, next) => {
     // Check if the user ID is present in the session
-    if (!req.session.userId) {
+    if (!req.session.userId ) {
         return res.status(401).json({ 'Error': 'Access denied!' });
     }
 
@@ -17,7 +15,7 @@ const fetchuser = async (req, res, next) => {
         next();
     } catch (error) {
         console.log(error.message)
-        res.status(400).send('Some internal server error');
+        res.status(500).send('Some internal server error');
     }
 };
 
