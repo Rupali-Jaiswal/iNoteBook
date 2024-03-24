@@ -8,7 +8,8 @@ const NoteState = (props) => {
     const [emailHelp, setemailHelp] = useState("We'll never share your email with anyone else.")
     const [notes, setnotes] = useState([])
     const[UserCreated,setUserCreated]=useState(false)
-    
+    // const[user_id,setuser_id]
+
     const getUser=async()=>{
       const host = 'http://localhost:5000'
       try {
@@ -27,6 +28,12 @@ const NoteState = (props) => {
         console.log(error)
       }
     }
+    
+    useEffect(()=>{
+      if(isAuthenticated){
+        getUser()
+      }
+    },[])
 
     const login = async (user) => {
       setUserCreated(false)
@@ -42,12 +49,8 @@ const NoteState = (props) => {
         })
         if (response.ok) {
           const user_id=await response.json()
-         const res_user=await getUser()
-         console.log(res_user)
-         if(res_user.ok){
           setIsAuthenticated(true)
-         }
-         console.log("frontend user logged in")
+          console.log("frontend user logged in")
         }
         else {
           return alert("Invalid credientials")

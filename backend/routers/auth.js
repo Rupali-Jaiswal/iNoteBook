@@ -63,7 +63,7 @@ router.post('/login', [body('email', 'Please enter a valid email').isEmail()], a
         await req.session.save();
         console.log("backend: you have logged in")
         console.log(req.session.userId)
-        res.status(200).json({'success':'You have logged in'})
+        res.status(200).json(req.session.userId)
     }
     catch {
         console.log(errors.message)

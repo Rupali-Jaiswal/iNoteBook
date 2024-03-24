@@ -20,7 +20,7 @@ app.use(cors({
 app.use(express.json());
 
 const store = new MongoDBStore({
-    uri: 'mongodb://localhost:27017/iNotebook',
+    uri:'mongodb://127.0.0.1:27017/iNotebook?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.',
     collection: 'sessions'
   });
 store.on('error', function (error) {
