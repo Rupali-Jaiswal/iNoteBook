@@ -21,5 +21,6 @@ const notesSchema=new mongoose.Schema({
         default:Date.now
     }
 })
-
-module.exports=mongoose.model('note',notesSchema)
+const Note=mongoose.model('Note',notesSchema)
+Note.createIndexes()
+module.exports=Note

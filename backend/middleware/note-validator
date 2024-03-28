@@ -1,0 +1,8 @@
+const {z}=require("zod")
+
+const noteSchema=z.object({
+    title:z.string({required_error:"Title is required"}).min(2,{required_error:"Title is required"}),
+    description:z.string({required_error:"description is required"}).min(2,{required_error:"description is required"})
+})
+
+module.exports=noteSchema

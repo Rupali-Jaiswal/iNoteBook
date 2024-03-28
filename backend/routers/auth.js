@@ -1,41 +1,40 @@
 const express = require('express')
 const router = express.Router()
+const fetchuser=require("../middleware/fetchuser")
+
+//? In Express.js, express.Router() is a mini Express application without all the server configurations but with the ability to define routes, middleware, and even have its own set of route handlers. It allows you to modularize your routes and middleware to keep your code organized and maintainable.
+//* <https://expressjs.com/en/guide/routing.html>
+//? Use the express.Router class to create modular, mountable route handlers. A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.
+
 const User = require('../models/User')
-const { body, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
-
-
+const validate=require('../middleware/auth-validation')
+const signupSchema=require('../middleware/signup-validation')
+const loginSchema=require('../middleware/login-validation')
 
 
 // create a user sign-up at api/auth/ end point
-router.post('/createUser', [
-    body('name', 'Enter a vaild name').isLength({ min: 5 }),
-    body('email', 'Enter a valid Email').isEmail(),
-    body('password', 'Password must be minimun of 3 charector').isLength({ min: 3 }),
-    // body('password', 'Password must contain atleast one charector').matches(/[-_@%^&$#*]/),
-    // body('password', 'Password must contain atleast one integer').matches(/[0-9]/)
-], async (req, res) => {
-    let Error = validationResult(req)
-    if (!Error.isEmpty()) {
-        return res.status(400).json({ 'Error': Error.array() })
-    }
+router.post('/createUser', validate(signupSchema),
+    async (req, res) => {
     try {
-        let user = await User.findOne({ email: req.body.email })
-        if (user) {
+        let userExist = await User.findOne({ email: req.body.email })
+        if (userExist) {
             return res.status(400).json({ "Error": 'Sorry! a user with this email already exits' })
         }
         const salt = await bcrypt.genSalt(10)
         const securepass = await bcrypt.hash(req.body.password, salt)
-        user = await User.create({
+        userCreated = await User.create({
             name: req.body.name,
             password: securepass,
             email: req.body.email
         })
-        await user.save()
-        req.session.userId = user.id
-        await req.session.save();
-        console.log('Your account has been created')
-        res.status(200).json({ 'Nice': 'your account has been created', user })
+        await userCreated.save()
+        res.status(201).json({
+            msg: "Registration Successful",
+            token: await userCreated.generateToken(),
+            userId: userCreated._id.toString(),
+            name:userCreated.name.toString()
+          });
     } catch (error) {
         console.log(error.message)
         res.status(500).send('some error occured')
@@ -43,27 +42,26 @@ router.post('/createUser', [
 
 })
 
+
 // Create a user login at api/auth/ end point
-router.post('/login', [body('email', 'Please enter a valid email').isEmail()], async (req, res) => {
-    let errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ "errors": errors.array().map(error => ({ msg: error.msg })) });
-    }
+router.route('/login').post(validate(loginSchema), async (req,   res) => {
     const { email, password } = req.body
     try {
-        let user = await User.findOne({ email })
-        if (!user) {
+        let userExist = await User.findOne({ email })
+        if (!userExist) {
             return res.status(400).json({ "sorry": 'Please login with correct credential' })
         }
-        const checkpass = await bcrypt.compare(password, user.password)
+        const checkpass = await bcrypt.compare(password, userExist.password)
         if (!checkpass) {
             return res.status(400).json({ "sorry": 'Please login with correct credential' })
         }
-        req.session.userId = user.id
-        await req.session.save();
         console.log("backend: you have logged in")
-        console.log(req.session.userId)
-        res.status(200).json(req.session.userId)
+        res.status(200).json({
+            message: "Login Successful",
+            token: await userExist.generateToken(),
+            userId: userExist._id.toString(),
+            name:userExist.name
+          });
     }
     catch {
         console.log(errors.message)
@@ -71,4 +69,12 @@ router.post('/login', [body('email', 'Please enter a valid email').isEmail()], a
     }
 })
 
+
+router.get('/getUser',  fetchuser, async (req, res) => {
+    try {
+        res.status(200).json(req.user);
+    } catch (error) {
+        res.status(500).send('Some internal server error');
+    }
+});
 module.exports = router
