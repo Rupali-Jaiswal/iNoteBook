@@ -3,7 +3,7 @@ import { useContext, useState, } from 'react'
 import NoteContext from '../context/notes/NoteContext'
 import { useNavigate}from 'react-router-dom'
 export default function SighUP() {
-  const { saveToken, setIsAuthenticated } = useContext(NoteContext)
+  const { saveToken, getUser} = useContext(NoteContext)
   const [user, setuser] = useState({ name: "", email: "", password: "" })
   const navigate = useNavigate()
   const createUser = async (user) => {
@@ -23,7 +23,7 @@ export default function SighUP() {
         saveToken(token)
         console.log("frontend created user details")
         console.log(registered_res)
-        setIsAuthenticated(true)
+        return true
       }
       else {
         return alert("Invalid credientials")
@@ -35,8 +35,10 @@ export default function SighUP() {
 
   const handleCreate = async (e) => {
     e.preventDefault()
-    await createUser(user)
-    navigate('/Main')
+    const status =await createUser(user)
+    if(status){
+     getUser() 
+    navigate('/Main')}
   }
 
   const handleChange = (e) => {

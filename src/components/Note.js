@@ -6,7 +6,7 @@ import NoteContext from '../context/notes/NoteContext'
 
 export default function Note(props) {
   const { title, description, id, handleUpdateIcon } = props;
-  const { notes, setnotes, getToken } = useContext(NoteContext)
+  const { notes, setnotes, getToken ,capatalize} = useContext(NoteContext)
 
   const deleteNote = async () => {
     const token = getToken()
@@ -41,12 +41,12 @@ export default function Note(props) {
       <div id="card" className="card mt-3 ml-4 p-xl-4">
         <div className="card-body ">
           <div className="container d-flex flex-row">
-            <h5 className="card-title" style={{ margin: "5px", padding: "2px" }}>{title}</h5>
+            <h5 className="card-title" style={{ margin: "5px", padding: "2px" }}>{capatalize(title)}</h5>
             <i style={{ margin: "5px", padding: "2px", color: "blue", cursor: "pointer" }}><FontAwesomeIcon icon={faPenToSquare} onClick={()=>handleUpdateIcon(id,title,description)} /></i>
             <i style={{ margin: "5px", padding: "2px", color: "blue", cursor: "pointer" }} onClick={() => { deleteNote() }}>
               <FontAwesomeIcon icon={faTrash} /></i>
           </div>
-          <p className="card-text">{description}</p>
+          <p className="card-text">{capatalize(description)}</p>
         </div>
       </div>
     </div>

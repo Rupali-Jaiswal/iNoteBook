@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NoteContext from './context/notes/NoteContext';
 import Main from './components/Main';
-import About from './components/About';
 import Login from './components/Login';
 import NoteState from './context/notes/NoteState';
 import SignUp from './components/SignUp';
@@ -33,8 +32,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Error />} />
             <Route path="/SignUp" element={<SignUp />} />
-            <Route path="/Main" element={<ProtectedRoute element={<Main />} />}/>
-            <Route path="/about" element={<ProtectedRoute element={<About />} />}/>
+            <Route path="/Main" element={<Main/>}/>
           </Routes>
         </Router>
       </NoteState>

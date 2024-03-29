@@ -1,4 +1,6 @@
 import React, { useEffect, useContext } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import {
     Link, useLocation
 } from "react-router-dom";
@@ -22,7 +24,7 @@ export default function Navbar() {
         <div>
             <nav className="navbar navbar-expand-lg bg-dark text-white ">
                 <div className="container-fluid">
-                    <Link className="navbar-brand text-white" href="#">Your Notebook</Link>
+                    <Link className="navbar-brand text-white" href="#"> <FontAwesomeIcon icon={faNoteSticky} /> iNotebook</Link>
                 {
                     isAuthenticated? <Link>  <button className="btn btn-primary" onClick={() => { logout() }} to="/">Logout</button></Link>:<></>
                 }

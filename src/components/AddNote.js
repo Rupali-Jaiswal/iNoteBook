@@ -2,12 +2,15 @@ import React, { useContext, useState, useEffect } from 'react'
 import NoteContext from '../context/notes/NoteContext'
 
 export default function AddNote() {
-  const {  getToken, notes, setnotes ,userName} = useContext(NoteContext)
+  const {  getToken, notes, setnotes ,userName,capatalize,getUser} = useContext(NoteContext)
   const [note, setnote] = useState({ title: "", description: "",  })
   const [status,setStatus]=useState(0)
   useEffect(() => {
+    getUser()
     getNote()
   },[status])
+
+  
 
   const getNote = async () => {
     const token = getToken()
@@ -77,7 +80,7 @@ export default function AddNote() {
     <div className='container'>
       <form className='container' id='add_note' onSubmit={onsubmit} style={{ width: "700px", marginTop: "10px" }} >
         <div className="form-group">
-          <h3>Hi {userName}</h3>
+          <h3>Hi {capatalize(userName)}</h3>
           <h5>Add Your Note</h5>
           <label htmlFor="title">Title</label>
           <input type="text" className="form-control" name="title" value={note.title} id="title" onChange={handleChange} placeholder="Title" />
