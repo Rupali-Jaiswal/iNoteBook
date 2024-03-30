@@ -37,14 +37,15 @@ export default function Note(props) {
 
 
   return (
-    <div >
-      <div id="card" className="card mt-3 ml-4 p-xl-4">
-        <div className="card-body ">
-          <div className="container d-flex flex-row">
-            <h5 className="card-title" style={{ margin: "5px", padding: "2px" }}>{capatalize(title)}</h5>
-            <i style={{ margin: "5px", padding: "2px", color: "blue", cursor: "pointer" }}><FontAwesomeIcon icon={faPenToSquare} onClick={()=>handleUpdateIcon(id,title,description)} /></i>
-            <i style={{ margin: "5px", padding: "2px", color: "blue", cursor: "pointer" }} onClick={() => { deleteNote() }}>
-              <FontAwesomeIcon icon={faTrash} /></i>
+    <div>
+      <div id="card" className="card m-3 p-xl-4 cardHover" style={{backgroundColor:"whitesmoke" }}>
+        <div className="card-body " >
+          <div className="d-flex flex-row justify-content-between">
+            <h5 className="card-title" style={{ margin: "4px", padding: "2px" }}>{capatalize(title)}</h5>
+            <div style={{margin:"5px"}} >
+            <FontAwesomeIcon icon={faPenToSquare} onClick={()=>handleUpdateIcon(id,title,description)} className='cardIcon' style={{padding:"2px", paddingLeft:"10px" ,color:"rgb(41, 64, 83)", cursor:"pointer"}} />
+            <FontAwesomeIcon icon={faTrash} onClick={() => { deleteNote() }} className='cardIcon'  style={{padding:"2px", paddingLeft:"10px" ,color:"rgb(41, 64, 83)", cursor:"pointer"}}/>
+            </div>
           </div>
           <p className="card-text">{capatalize(description)}</p>
         </div>

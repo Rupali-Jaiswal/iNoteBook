@@ -70,26 +70,27 @@ export default function AddNote() {
     e.preventDefault()
     addNote(note)
   }
-
+  const handleClear=(e)=>{
+    setnote({title:"",description:""})
+  }
 
   const handleChange = (e) => {
     setnote({ ...note, [e.target.name]: e.target.value })
   }
 
   return (
-    <div className='container'>
-      <form className='container' id='add_note' onSubmit={onsubmit} style={{ width: "700px", marginTop: "10px" }} >
-        <div className="form-group">
-          <h3>Hi {capatalize(userName)}</h3>
+    <div style={{width:"100%"}}>
+      <form className='container' id='add_note' onSubmit={onsubmit}  >
+        <div className="form-group text-white mt-3">
+          <h3 className=''>Hi {capatalize(userName)}</h3>
           <h5>Add Your Note</h5>
-          <label htmlFor="title">Title</label>
-          <input type="text" className="form-control" name="title" value={note.title} id="title" onChange={handleChange} placeholder="Title" />
+          <input type="text" className="form-control inputHover" name="title" value={note.title} id="title" onChange={handleChange} placeholder="Title" required="true" />
         </div>
         <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea type="text" className="form-control" name='description' value={note.description} id="description" onChange={handleChange} placeholder="description" />
+          <textarea type="text" className="form-control inputHover" name='description' value={note.description} id="description" onChange={handleChange} placeholder="description" rows="8" cols="200" required="true"/>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn" style={{backgroundColor:"black", color:"white", }}>Save</button>
+        <div  className="btn ml-1" onClick={handleClear} style={{backgroundColor:"black", color:"white", }}>Clear</div>
       </form>
     </div>
   )

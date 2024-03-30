@@ -1,11 +1,18 @@
 import React from 'react'
 import { useContext, useState, } from 'react'
 import NoteContext from '../context/notes/NoteContext'
-import { useNavigate}from 'react-router-dom'
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faKey } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { Link, useNavigate } from 'react-router-dom'
+
 export default function SighUP() {
   const { saveToken, getUser} = useContext(NoteContext)
   const [user, setuser] = useState({ name: "", email: "", password: "" })
   const navigate = useNavigate()
+
+
   const createUser = async (user) => {
     const host = 'http://localhost:5000'
     try {
@@ -46,26 +53,44 @@ export default function SighUP() {
   }
   return (
     <>
-      <div style={{ width: "100%", backgroundImage: "url(bg.jpg)", backgroundSize: "cover" }}>
-        <div className='container' style={{ width: "400px", marginTop: "40px" }}>
-          <h4 className="ml-5">Create Your User Account</h4>
-          <form className='card' style={{ padding: "25px" }} onSubmit={handleCreate}>
-            <div className="mb-3">
-              <div className="mb-3">
-                <label htmlFor="exampleInputName" className="form-label">Name</label>
-                <input type="text" className="form-control" id="exampleInputPassword1" name='name' onChange={handleChange} />
-              </div>
-              <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email' onChange={handleChange} />
-              <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+      <div style={{width:"100%"}}>
+      <div className="container" style={{height:"90vh"}}>
+        <div className="container d-flex justify-content-center  h-100">
+          <div className="card Card">
+            <div className="card-header Card-header d-flex justify-content-between">
+              <h3>SignUp</h3>
             </div>
-            <div className="mb-3">
-              <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-              <input type="password" className="form-control" id="exampleInputPassword2" name='password' onChange={handleChange} />
+            <div className="card-body">
+              <form onSubmit={handleCreate}>
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon icon={faUser}/></span>
+                  </div>
+                  <input type="name" className="form-control" id="exampleInputName1" aria-describedby="name" name="name" onChange={handleChange} placeholder='Name' required="true"  />
+                </div>
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon icon={faEnvelope}/></span>
+                  </div>
+                  <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" onChange={handleChange} placeholder='Email' required="true" />
+                </div>
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon icon={faKey}/></span>
+                  </div>
+                  <input type="password" className="form-control" id="exampleInputPassword1" name="password" onChange={handleChange} placeholder='Password' required="true"/>
+                </div>
+                <div className="row align-items-center remember">
+                  <input type="checkbox"/>Remember Me
+                </div>
+                <div className="form-group">
+                  <input type="submit" value="SignUp" className="btn float-right login_btn"/>
+                </div>
+              </form>
             </div>
-            <button className="btn btn-primary">Create User</button>
-          </form>
+          </div>
         </div>
+      </div>
       </div>
     </>
   )

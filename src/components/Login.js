@@ -1,16 +1,21 @@
-import React, { useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext'
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faKey } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from 'react-router-dom'
-export default function Login() {
-  const { emailHelp, setUserCreated,
-   saveToken,getUser} = useContext(NoteContext)
+export default function Login(props) {
+  const { 
+  saveToken, getUser,setIsAuthenticated } = useContext(NoteContext)
   const [user, setuser] = useState({ email: "", password: "" })
   const navigate = useNavigate()
 
- 
+  const handleClose=()=>{
+    props.handleToggle()
+  }
+
 
   const login = async (user) => {
-    setUserCreated(false)
     const host = 'http://localhost:5000'
     try {
       const url = `${host}/api/auth/login`
@@ -25,6 +30,8 @@ export default function Login() {
       if (response.ok) {
         const token = login_res.token
         await saveToken(token)
+        setIsAuthenticated(true)
+        props.handleToggle()
         console.log("frontend user logged in " + token)
         return true
       }
@@ -50,21 +57,42 @@ export default function Login() {
   }
   return (
     <>
-      <div className='container' style={{ width: "400px", marginTop: "50px", }}>
-        <h4 className="text-centre" style={{ textAlign: "center", fontSize: "25px", fontFamily: " Arial, Helvetica, sans-serif" }}>Get Started</h4>
-        <form className='card' style={{ padding: "30px" }} onSubmit={handleLogin}>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label" >Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" onChange={handleChange} />
-            <div id="emailHelp" className="form-text">{emailHelp}</div>
+      <div >
+        <div className="d-flex h-100">
+          <div className="card Card">
+            <div className="card-header Card-header d-flex justify-content-between">
+              <h3>Sign In</h3>
+              <h4 style={{cursor:"pointer", color:"white"}} onClick={handleClose}>&#x2715;</h4>
+            </div>
+            <div className="card-body">
+              <form onSubmit={handleLogin}>
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon icon={faEnvelope}/></span>
+                  </div>
+                  <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" onChange={handleChange} placeholder='Username' required="true" />
+                </div>
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon icon={faKey}/></span>
+                  </div>
+                  <input type="password" className="form-control" id="exampleInputPassword1" name="password" onChange={handleChange} placeholder='Password' required="true"/>
+                </div>
+                <div className="row align-items-center remember">
+                  <input type="checkbox"/>Remember Me
+                </div>
+                <div className="form-group">
+                  <input type="submit" value="Login"  className="btn float-right login_btn"/>
+                </div>
+              </form>
+            </div>
+            <div className="card-footer">
+              <div className="d-flex justify-content-center links">
+                Don't have an account?<Link to="/SignUp" onClick={props.handleToggle}>Sign Up</Link>
+              </div>
+            </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" name="password" onChange={handleChange} />
-          </div>
-          <button className="btn btn-dark" type='submit'>Login</button>
-          <div className="form-text" >Didn't have Account? Click on <Link to='/SignUp'>Create Account</Link></div>
-        </form>
+        </div>
       </div>
     </>
   )

@@ -81,39 +81,39 @@ export default function Notes() {
         setnote({ ...note, [e.target.name]: e.target.value })
     }
     return (
-        <div className='container'>
-            <h5 className='mx-5'>{notes.length !== 0 && 'Your Notes'}</h5>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={ref} style={{ display: "none" }}>
+        <div className='Notes' style={{width:"100%", height:"100%"}}>
+            <div className="cantainer">
+            <h5 className='container pt-3 ml-3 text-white'>{notes.length !== 0 && 'Your Notes'}</h5>
+            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={ref} style={{ display: "none" }}>
                 Launch demo modal
             </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  >
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Note</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true"  >
+                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Edit Note</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <form className='container' id='add_note' onSubmit={onsubmit} style={{ width: "400px", marginTop: "10px" }} >
                                 <div className="form-group">
-                                    <label htmlFor="title">Title</label>
                                     <input type="text" className="form-control" name="title" value={note.title} id="title" onChange={handleChange} placeholder="Title" />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="description">Description</label>
-                                    <textarea type="text" className="form-control" name='description' value={note.description} id="description" onChange={handleChange} placeholder="description" />
+                                    <textarea type="text" className="form-control" name='description' value={note.description} id="description" onChange={handleChange} placeholder="description" rows={8} cols={100} />
                                 </div>
                                 <button type="submit " className="btn btn-primary mx-1" data-bs-dismiss="modal">Submit</button>
-                                <button type="button" class="btn btn-secondary mx-1" data-bs-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary mx-1" data-bs-dismiss="modal">Close</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="note">
+            <div id="notes">
                 {Array.isArray(notes) && notes.map((x) => {
                     return <Note title={x.title} description={x.description} key={x._id} id={x._id} handleUpdateIcon={handleUpdateIcon} />
                 })}
+            </div>
             </div>
         </div>
     )

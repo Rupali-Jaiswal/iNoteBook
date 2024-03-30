@@ -1,46 +1,204 @@
-#card{
-    height: 150px;
-  }
-  
-  
-  #add_note{
-    width: 600px;
-    margin: 30px;
-  }
-  @media  screen and (min-width:1100px ){
-    #note{
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: 10px;
-    }
-    #card{
-      width: 320px
-    }
-  }
-  @media screen and (max-width:1100px) {
-    #card{
-      width: 300px
-    }
-    #note{
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-  @media  screen and (max-width:700px ){
-    #card{
-      width: 350px
-    }
-    #note{
-      display: flex;
-      justify-content: center
-    };
-    #welcome{
-      display: none;
-    }
-  }
-  
+#card {
+  height: 200px;
+}
 
-  .welcome{
+.Notes {
+  background-color: rgb(20, 25, 31);
+}
+
+.cardHover:hover {
+  cursor: grab;
+  box-shadow: -5px 5px 0 0 rgb(41, 64, 83);
+  border: rgb(41, 64, 83) solid 2px;
+}
+
+.inputHover:hover {
+  border: rgb(41, 64, 83) solid 2px;
+}
+
+.textHover :hover {
+  transform: scale(1.05);
+}
+
+.btn:hover {
+  box-shadow: -3px 3px 0 0 rgb(41, 64, 83);
+  border: rgb(41, 64, 83) solid 2px;
+}
+
+.d-center {
+  display: flex;
+  justify-content: center;
+}
+
+.link-custom {
+  margin-left: 20px;
+  font-size: large;
+  position: relative;
+}
+.link-custom::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  transition: all 0.2s;
+  color: white;
+}
+.link-custom:hover::after {
+  width: 100%;
+  color: var(--color-heading);
+}
+
+
+.cardIcon:hover{
+  transform: scale(1.1);
+}
+
+@media screen and (min-width: 1100px) {
+  #notes {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+  }
+  #card {
+    width: 320px;
+  }
+  #add_note {
+    width: 700px;
+  }
+  .welcome {
+    width: 700px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  #card {
+    width: 300px;
+  }
+  #notes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #add_note {
+    width: 600px;
+  }
+  .welcome {
+    width: 500px;
+  }
+}
+@media screen and (max-width: 700px) {
+  #card {
+    width: 350px;
+  }
+  #notes {
+    display: flex;
+    justify-content: center;
+  }
+  .welcome {
     width: 400px;
   }
-   
+  #add_note {
+    width: 90%;
+  }
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.769) !important;
+}
+
+/* Made with love by Mutiullah Samim*/
+@import url("https://fonts.googleapis.com/css?family=Numans");
+
+html,
+body {
+  background-image: url("https://images.unsplash.com/photo-1527345931282-806d3b11967f?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  font-family: "Numans", sans-serif;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+.Container{
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.Card {
+  height: 340px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.717) !important;
+}
+
+.social_icon span {
+  font-size: 60px;
+  margin-left: 10px;
+  color: #ffc312;
+}
+
+.social_icon span:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.Card-header h3 {
+  color: white;
+}
+
+.social_icon {
+  position: absolute;
+  right: 20px;
+  top: -45px;
+}
+
+.input-group-prepend span {
+  width: 50px;
+  background-color: #ffc312;
+  color: black;
+  border: 0 !important;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+  color: white;
+}
+
+.remember input {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.login_btn {
+  color: black;
+  background-color: #ffc312;
+  width: 100px;
+}
+
+.login_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}

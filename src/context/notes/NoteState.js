@@ -25,6 +25,7 @@ const NoteState = (props) => {
       const user = await response.json()
       const name = user.name
       setUserName(name)
+      setIsAuthenticated(true)
       console.log("Retrived user details:")
       console.log(user)
       return user
