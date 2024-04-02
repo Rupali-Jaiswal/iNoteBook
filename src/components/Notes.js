@@ -82,7 +82,7 @@ export default function Notes() {
     }
     return (
         <div className='Notes' style={{width:"100%", height:"100%"}}>
-            <div className="cantainer">
+            <div className="cantainer" >
             <h5 className='container pt-3 ml-3 text-white'>{notes.length !== 0 && 'Your Notes'}</h5>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={ref} style={{ display: "none" }}>
                 Launch demo modal

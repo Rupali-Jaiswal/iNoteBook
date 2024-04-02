@@ -87,7 +87,7 @@ export default function AddNote() {
           <input type="text" className="form-control inputHover" name="title" value={note.title} id="title" onChange={handleChange} placeholder="Title" required="true" />
         </div>
         <div className="form-group">
-          <textarea type="text" className="form-control inputHover" name='description' value={note.description} id="description" onChange={handleChange} placeholder="description" rows="8" cols="200" required="true"/>
+          <textarea type="text" className="form-control inputHover" name='description' value={note.description} id="description" onChange={handleChange} placeholder="description" rows="11" cols="205" required="true"/>
         </div>
         <button type="submit" className="btn" style={{backgroundColor:"black", color:"white", }}>Save</button>
         <div  className="btn ml-1" onClick={handleClear} style={{backgroundColor:"black", color:"white", }}>Clear</div>

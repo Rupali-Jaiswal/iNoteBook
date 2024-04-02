@@ -54,9 +54,9 @@ export default function Navbar() {
                             </li>
                         </ul>
                         {
-                            isAuthenticated ? <><span className=" text-white d-none  d-lg-block">
+                            isAuthenticated ? <><span className=" text-white ">
                                 <Link to={'/'} onClick={logout} className=' btn btn-light' >Logout</Link>
-                            </span></> : <><span className=" text-white d-none  d-lg-block">
+                            </span></> : <><span className=" text-white ">
                                 <Link to={'/SignUP'} className=' btn btn-light' >SignUP</Link>
                             </span></>
                         }
