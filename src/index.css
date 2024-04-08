@@ -4,7 +4,7 @@
 
 .Notes {
   background-color: rgb(20, 25, 31);
-
+  width: 100%;
 }
 
 .cardHover:hover {
@@ -90,7 +90,7 @@
 }
 @media screen and (max-width: 700px) {
   #card {
-    width: 350px;
+    width: 360px;
   }
   #notes {
     display: flex;
@@ -100,7 +100,7 @@
     width: 400px;
   }
   #add_note {
-    width: 90%;
+    width: 96%;
   }
 }
 

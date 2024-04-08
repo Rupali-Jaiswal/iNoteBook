@@ -24,8 +24,8 @@ export default function SighUP() {
         },
         body: JSON.stringify({ name: user.name, email: user.email, password: user.password })
       })
+      const registered_res = await response.json()
       if (response.ok) {
-        const registered_res = await response.json()
         const token = registered_res.token
         saveToken(token)
         console.log("frontend created user details")
@@ -33,7 +33,7 @@ export default function SighUP() {
         return true
       }
       else {
-        return alert("Invalid credientials")
+        return alert(JSON.stringify(registered_res))
       }
     } catch (error) {
       console.log(error.msg)

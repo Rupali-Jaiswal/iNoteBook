@@ -22,6 +22,9 @@ app.use('/api/note', require('./routers/note'));
 app.get('/protected', fetchuser, (req, res) => {
     res.json({ user: req.user });
 });
+app.get('/', (req, res) => {
+    res.json({'Hello':'this is inotebook'});
+});
 
 
 

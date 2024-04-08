@@ -81,9 +81,9 @@ export default function Notes() {
         setnote({ ...note, [e.target.name]: e.target.value })
     }
     return (
-        <div className='Notes' style={{width:"100%", height:"100%"}}>
-            <div className="cantainer" >
-            <h5 className='container pt-3 ml-3 text-white'>{notes.length !== 0 && 'Your Notes'}</h5>
+        <div className='Notes' style={{width:"100%",minHeight:"100vh", height:"100%"}}>
+            <div className="" >
+            <h5 className='container pt-3 ml-3 text-white'>{notes.length ?' Your Notes':"Add Your Notes"}</h5>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={ref} style={{ display: "none" }}>
                 Launch demo modal
             </button>

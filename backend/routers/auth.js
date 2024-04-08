@@ -19,7 +19,7 @@ router.post('/createUser', validate(signupSchema),
     try {
         let userExist = await User.findOne({ email: req.body.email })
         if (userExist) {
-            return res.status(400).json({ "Error": 'Sorry! a user with this email already exits' })
+            return res.status(400).json({ "Error": 'Sorry! a User with this email already exits' })
         }
         const salt = await bcrypt.genSalt(10)
         const securepass = await bcrypt.hash(req.body.password, salt)
