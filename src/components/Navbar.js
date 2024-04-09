@@ -22,7 +22,7 @@ export default function Navbar() {
 
     return (
         <div style={{width:"100%"}}>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary ">
+            <nav className="navbar navbar-expand-lg ">
                 <div className="container-fluid ">
                     <div>
                     <Link className="navbar-brand text-white link-custom" to={'/'}><FontAwesomeIcon icon={faNoteSticky} /> iNoteBook</Link>
@@ -57,7 +57,7 @@ export default function Navbar() {
                             isAuthenticated ? <><span className=" text-white ">
                                 <Link to={'/'} onClick={logout} className=' btn btn-light' >Logout</Link>
                             </span></> : <><span className=" text-white ">
-                                <Link to={'/SignUP'} className=' btn btn-light' >SignUP</Link>
+                                <Link to={'/SignUP'} className='btn btn-light' >SignUP</Link>
                             </span></>
                         }
                     </div>

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import NoteContext from '../context/notes/NoteContext'
+import { host } from '../BaseUrl'
 
 export default function Note(props) {
   const { title, description, id, handleUpdateIcon } = props;
@@ -10,7 +11,6 @@ export default function Note(props) {
 
   const deleteNote = async () => {
     const token = getToken()
-    const host = 'http://localhost:5000'
     try {
       const url = `${host}/api/note/deleteNote`
       const response = await fetch(url, {

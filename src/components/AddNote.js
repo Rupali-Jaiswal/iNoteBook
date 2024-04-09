@@ -4,20 +4,23 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
 import { faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons';
+import { host } from '../BaseUrl'
+
+
 export default function AddNote() {
   const { getToken, notes, setnotes, userName, capatalize, getUser } = useContext(NoteContext)
   const [note, setnote] = useState({ title: "", description: "", })
   const [status, setStatus] = useState(0)
 
+
   const {
     transcript,
     listening,
-    resetTranscript,
+    // resetTranscript,
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
 
   const setTranscript = () => {
-    const newnote = { title: "", description: transcript }
     setnote({ ...note, title: "", description: transcript })
     console.log(note)
   }
@@ -38,7 +41,6 @@ export default function AddNote() {
   }
   const getNote = async () => {
     const token = getToken()
-    const host = 'http://localhost:5000'
     try {
       const url = `${host}/api/note/fetchNote`
       const response = await fetch(url, {
@@ -60,7 +62,6 @@ export default function AddNote() {
 
   const addNote = async (note) => {
     const token = getToken()
-    const host = 'http://localhost:5000'
     try {
       const url = `${host}/api/note/addNote`
       const response = await fetch(url, {

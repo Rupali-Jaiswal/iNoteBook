@@ -4,6 +4,8 @@ import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faKey } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from 'react-router-dom'
+import { host } from '../BaseUrl'
+
 export default function Login(props) {
   const { 
   saveToken, getUser,setIsAuthenticated } = useContext(NoteContext)
@@ -15,8 +17,8 @@ export default function Login(props) {
   }
 
 
+
   const login = async (user) => {
-    const host = 'http://localhost:5000'
     try {
       const url = `${host}/api/auth/login`
       const response = await fetch(url, {
@@ -82,7 +84,7 @@ export default function Login(props) {
                   <input type="checkbox"/>Remember Me
                 </div>
                 <div className="form-group">
-                  <input type="submit" value="Login"  className="btn float-right login_btn"/>
+                  <input type="submit" value="Login"  className="btn float-right login-btn" style={{backgroundColor:"#78c7e1", color:"black"}}/>
                 </div>
               </form>
             </div>

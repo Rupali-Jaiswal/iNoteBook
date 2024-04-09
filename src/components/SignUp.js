@@ -5,7 +5,9 @@ import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faKey } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
+import { host } from '../BaseUrl'
+
 
 export default function SighUP() {
   const { saveToken, getUser} = useContext(NoteContext)
@@ -14,7 +16,6 @@ export default function SighUP() {
 
 
   const createUser = async (user) => {
-    const host = 'http://localhost:5000'
     try {
       const url = `${host}/api/auth/createUser`
       const response = await fetch(url, {
@@ -84,7 +85,7 @@ export default function SighUP() {
                   <input type="checkbox"/>Remember Me
                 </div>
                 <div className="form-group">
-                  <input type="submit" value="SignUp" className="btn float-right login_btn"/>
+                  <input type="submit" value="SignUp" className="btn float-right login_btn" style={{backgroundColor:"#78c7e1", color:"black"}}/>
                 </div>
               </form>
             </div>

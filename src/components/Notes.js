@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
 import Note from './Note'
 import NoteContext from '../context/notes/NoteContext'
-
+import { host } from '../BaseUrl'
 
 export default function Notes() {
     const { notes, getToken, setnotes } = useContext(NoteContext)
@@ -17,7 +17,6 @@ export default function Notes() {
 
     const getNote = async () => {
         const token = getToken()
-        const host = 'http://localhost:5000'
         try {
             const url = `${host}/api/note/fetchNote`
             const response = await fetch(url, {
@@ -40,7 +39,6 @@ export default function Notes() {
 
     const updateNote = async (id,title,description) => {
         const token = getToken()
-        const host = 'http://localhost:5000'
         try {
             const url = `${host}/api/note/updateNote`
             const response = await fetch(url, {
@@ -102,7 +100,7 @@ export default function Notes() {
                                 <div className="form-group">
                                     <textarea type="text" className="form-control" name='description' value={note.description} id="description" onChange={handleChange} placeholder="description" rows={8} cols={100} />
                                 </div>
-                                <button type="submit " className="btn btn-primary mx-1" data-bs-dismiss="modal">Submit</button>
+                                <button type="submit " className="btn btn-primary mx-1" data-bs-dismiss="modal">Save</button>
                                 <button type="button" className="btn btn-secondary mx-1" data-bs-dismiss="modal">Close</button>
                             </form>
                         </div>

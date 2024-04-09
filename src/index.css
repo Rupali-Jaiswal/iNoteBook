@@ -105,7 +105,7 @@
 }
 
 .navbar {
-  background-color: rgba(0, 0, 0, 0.769) !important;
+  background-color: rgba(0, 0, 0, 0.769) ;
 }
 
 /* Made with love by Mutiullah Samim*/
@@ -185,13 +185,13 @@ input:focus {
   margin-right: 5px;
 }
 
-.login_btn {
+.login-btn {
   color: black;
   background-color: #ffc312;
   width: 100px;
 }
 
-.login_btn:hover {
+.login-btn:hover {
   color: black;
   background-color: white;
 }
