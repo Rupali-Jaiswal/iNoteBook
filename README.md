@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+<p align="center">
+<img style="align:center;" src="https://github.com/streetwriters/notesnook/raw/master/resources/icon.png" alt="Notesnook Logo" width="100" />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">iNoteBook</h1>
+<h3 align="center">An end-to-end encrypted note taking alternative to Evernote.</h3>
+<p align="center">
+</p>
 
-## Available Scripts
+# Overview
 
-In the project directory, you can run:
+iNoteBook is a free (as in speech) & open-source note-taking app focused on user privacy & ease of use.
+We aim to provide users peace of mind & 100% confidence that their notes are safe and secure. The decision to go fully open source is one of the most crucial steps towards that.
 
-### `npm start`
+This repository contains all the code required to build & use the Notesnook web, desktop & mobile clients.
+If you are looking for a full feature list or screenshots, please check the [website](https://i-note-book-pi.vercel.app).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Note Management**: Add, edit, and delete notes effortlessly.
+- **Voice-to-Text Note**: Convert spoken words into text notes using voice recognition.
+- **User Authentication**: Secure your notes with user authentication to ensure privacy.
+- **Real-time Updates**: Experience real-time updates when collaborating with others on shared notes.
+- **Responsive Design**: Access your notes on any device with a responsive and intuitive user interface.
+- **Search Functionality**: Easily find specific notes using the search feature.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with the Notebook Application, follow these steps:
 
-### `npm run build`
+1. Clone the repository to your local machine.
+2. Navigate to the project directory in your terminal.
+3. Install dependencies by running `npm install`.
+4. Start the frontend server by running `npm run start`.
+5. Open http://localhost:3000 in your browser to access the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Libraries and Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The Notebook Application utilizes the following libraries and dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **React**: A JavaScript library for building user interfaces.
+- **Node.js**: A JavaScript runtime for building server-side applications.
+- **Express**: A web application framework for Node.js for building APIs and web servers.
+- **MongoDB**: A NoSQL database used for storing notes and user data.
+- **React Router**: A routing library for React applications.
+- **Mongoose**: An Object Data Modeling (ODM) library for MongoDB and Node.js.
+- **SpeechRecognition API**: A browser API for converting speech to text.
+- **JWT (JSON Web Tokens)**: A compact, URL-safe means of representing claims to be transferred between two parties.
+- **Bootstrap**: A front-end framework for designing responsive and mobile-first websites.
+- **FontAwesome**: A library of icons and fonts for use in web projects.
+- **Axios**: A promise-based HTTP client for making AJAX requests.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
