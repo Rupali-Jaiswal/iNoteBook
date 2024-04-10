@@ -15,7 +15,7 @@ function Home() {
             Welcome to iNoteBook
           </h3>
           <div className="" style={{ fontSize: "19px", fontFamily: "Arial, Helvetica, sans-serif" }}>
-            Enjoy the convenience of syncing your notes across all your devices, ensuring access anytime, anywhere.<br />
+            Enjoy the convenience of syncing your notes across all your devices, ensuring access anytime, anywhere,Converts spoken words into text notes.<br />
             Customize your notebook with fonts, colors, and themes to reflect your personal style.<br />
             Your data is encrypted and secure.
           </div>

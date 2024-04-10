@@ -3,7 +3,7 @@ import NoteContext from '../context/notes/NoteContext'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
-import { faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons';
+import { faMicrophoneSlash,faPause } from '@fortawesome/free-solid-svg-icons';
 import { host } from '../BaseUrl'
 
 
@@ -125,14 +125,14 @@ export default function AddNote() {
           <input type="text" className="form-control inputHover" name="title" value={note.title} id="title" onChange={handleChange} placeholder="Title" required="true" />
         </div>
         <div className="form-group">
-          <textarea type="text" className="form-control inputHover" name='description' value={note.description} id="description" onChange={handleChange} placeholder="description" rows="11" cols="205" required="true" />
+          <textarea type="text" className="form-control inputHover" name='description' value={note.description} id="description" onChange={handleChange} placeholder="Description" rows="11" cols="205" required="true" />
         </div>
-        <button type="submit" className="btn" style={{ backgroundColor: "black", color: "white", }}>Save</button>
-        <div className="btn ml-1" onClick={handleClear} style={{ backgroundColor: "black", color: "white", }}>Clear</div>
-        <div className="btn ml-1" onClick={handleCopy} style={{ backgroundColor: "black", color: "white", }}>Copy</div>
+        <button type="submit" className="btn btnHover" style={{ backgroundColor: "black", color: "white", }}>Save</button>
+        <div className="btn ml-2 btnHover" onClick={handleClear} style={{ backgroundColor: "black", color: "white", }}>Clear</div>
+        <div className="btn ml-2 btnHover" onClick={handleCopy} style={{ backgroundColor: "black", color: "white", }}>Copy</div>
         {listening ?<> 
-        <div className='btn ml-1' onClick={SpeechRecognition.stopListening} style={{ backgroundColor: "red", color: "black", }}><FontAwesomeIcon icon={faMicrophone} /></div></>:
-        <> <div className='btn ml-1' onClick={() => { startlistening() }} style={{ backgroundColor: "skyblue", color: "black", }}><FontAwesomeIcon icon={faMicrophone} /></div>
+        <div className='btn ml-2 pause pauseHover' onClick={SpeechRecognition.stopListening} style={{ backgroundColor: "red", color: "white", }}><FontAwesomeIcon icon={faPause} /></div></>:
+        <> <div className='btn ml-2 microphoneHover'  onClick={() => { startlistening() }} style={{ backgroundColor: "skyblue", color: "black", }}><FontAwesomeIcon icon={faMicrophone} /></div>
        </>}
       </form>
       <div>

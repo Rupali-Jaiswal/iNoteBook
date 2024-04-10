@@ -9,7 +9,7 @@
 
 .cardHover:hover {
   cursor: grab;
-  box-shadow: -5px 5px 0 0 rgb(41, 64, 83);
+  box-shadow: -3px 5px 0 0 rgb(41, 64, 83);
   border: rgb(41, 64, 83) solid 2px;
 }
 
@@ -21,8 +21,18 @@
   transform: scale(1.05);
 }
 
-.btn:hover {
-  box-shadow: -3px 3px 0 0 rgb(41, 64, 83);
+.microphoneHover:Hover{
+  box-shadow: -2px 2px 0 0 rgb(13, 64, 106);
+  border: rgb(5, 62, 108) solid 2px
+}
+
+.pauseHover:hover{
+  box-shadow: -2px 2px 0 0 rgb(119, 26, 26);
+  border: rgb(119, 26, 26) solid 2px
+}
+
+.btnHover:hover {
+  box-shadow: -2px 2px 0 0 rgb(41, 64, 83);
   border: rgb(41, 64, 83) solid 2px;
 }
 
@@ -75,7 +85,7 @@
 }
 @media screen and (max-width: 1100px) {
   #card {
-    width: 300px;
+    width: 295px;
   }
   #notes {
     display: flex;
