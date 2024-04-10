@@ -25,9 +25,9 @@ export default function Navbar() {
             <nav className="navbar navbar-expand-lg ">
                 <div className="container-fluid ">
                     <div>
-                    <Link className="navbar-brand text-white link-custom" to={'/'}><FontAwesomeIcon icon={faNoteSticky} /> iNoteBook</Link>
+                    <Link className="navbar-brand text-white link-custom " to={'/'}><FontAwesomeIcon icon={faNoteSticky} /> iNoteBook</Link>
                     {
-                            isAuthenticated ? <><span className=" text-white   d-none">
+                            isAuthenticated ? <><span className=" text-white   d-lg-none">
                                 <Link to={'/'} onClick={logout} className=' btn btn-light' >Logout</Link>
                             </span></> : <><span className=" text-white d-lg-none">
                                 <Link to={'/SignUP'} className=' btn btn-light' >SignUP</Link>
@@ -54,10 +54,10 @@ export default function Navbar() {
                             </li>
                         </ul>
                         {
-                            isAuthenticated ? <><span className=" text-white ">
+                            isAuthenticated ? <><span className=" text-white d-sm-block d-none">
                                 <Link to={'/'} onClick={logout} className=' btn btn-light' >Logout</Link>
                             </span></> : <><span className=" text-white ">
-                                <Link to={'/SignUP'} className='btn btn-light' >SignUP</Link>
+                                <Link to={'/SignUP'} className='btn btn-light d-sm-block d-none' >SignUP</Link>
                             </span></>
                         }
                     </div>
