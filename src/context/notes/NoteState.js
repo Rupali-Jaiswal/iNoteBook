@@ -1,7 +1,7 @@
 import NoteContext from "./NoteContext";
 import React from "react";
 import { useState } from "react";
-
+import {host} from '../../BaseUrl'
 const NoteState = (props) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -10,7 +10,6 @@ const NoteState = (props) => {
   const [notes, setnotes] = useState([])
   
   const getUser = async () => {
-    const host = 'http://localhost:5000'
     const token = getToken()
     try {
       const url = `${host}/api/auth/getUser`

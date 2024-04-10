@@ -90,7 +90,7 @@
 }
 @media screen and (max-width: 700px) {
   #card {
-    width: 340px;
+    width: 320px;
   }
   #notes {
     display: flex;
