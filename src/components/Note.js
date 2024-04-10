@@ -34,6 +34,12 @@ export default function Note(props) {
 
   }
 
+    const RemoveSpace = (text) => {
+    let newtext = text.split(/\s+/);
+    return newtext;
+  }
+
+  
 
 
   return (
@@ -41,13 +47,13 @@ export default function Note(props) {
       <div id="card" className="card m-3 p-xl-4 cardHover" style={{backgroundColor:"whitesmoke" }}>
         <div className="card-body " >
           <div className="d-flex flex-row justify-content-between">
-            <h5 className="card-title" style={{ margin: "4px", padding: "2px" }}>{capatalize(title)}</h5>
+            <h5 className="card-title" style={{ margin: "4px", padding: "2px" }}>{capatalize(title).slice(0,15)}</h5>
             <div style={{margin:"5px"}} >
             <FontAwesomeIcon icon={faPenToSquare} onClick={()=>handleUpdateIcon(id,title,description)} className='cardIcon' style={{padding:"2px", paddingLeft:"10px" ,color:"rgb(41, 64, 83)", cursor:"pointer"}} />
             <FontAwesomeIcon icon={faTrash} onClick={() => { deleteNote() }} className='cardIcon'  style={{padding:"2px", paddingLeft:"10px" ,color:"rgb(41, 64, 83)", cursor:"pointer"}}/>
             </div>
           </div>
-          <p className="card-text">{capatalize(description)}</p>
+          <p className="card-text">{(capatalize(description)).slice(0,90)}</p>
         </div>
       </div>
     </div>
