@@ -16,7 +16,7 @@ export default function AddNote() {
   const {
     transcript,
     listening,
-    // resetTranscript,
+    resetTranscript,
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
 
@@ -101,6 +101,7 @@ export default function AddNote() {
 
   const handleClear = (e) => {
     setnote({ title: "", description: "" })
+    resetTranscript()
   }
 
   const handleChange = (e) => {
@@ -130,8 +131,8 @@ export default function AddNote() {
         <div className="btn ml-1" onClick={handleClear} style={{ backgroundColor: "black", color: "white", }}>Clear</div>
         <div className="btn ml-1" onClick={handleCopy} style={{ backgroundColor: "black", color: "white", }}>Copy</div>
         {listening ?<> 
-        <div className='btn ml-1' onClick={SpeechRecognition.stopListening} style={{ backgroundColor: "black", color: "white", }}><FontAwesomeIcon icon={faMicrophoneSlash} /></div></>:
-        <> <div className='btn ml-1' onClick={() => { startlistening() }} style={{ backgroundColor: "black", color: "white", }}><FontAwesomeIcon icon={faMicrophone} /></div>
+        <div className='btn ml-1' onClick={SpeechRecognition.stopListening} style={{ backgroundColor: "red", color: "black", }}><FontAwesomeIcon icon={faMicrophone} /></div></>:
+        <> <div className='btn ml-1' onClick={() => { startlistening() }} style={{ backgroundColor: "skyblue", color: "black", }}><FontAwesomeIcon icon={faMicrophone} /></div>
        </>}
       </form>
       <div>
