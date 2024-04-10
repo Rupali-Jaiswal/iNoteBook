@@ -8,7 +8,7 @@ connectToMongo();
 
 
 app.use(cors({
-    origin: ['http://localhost:3000','https://i-note-book-wheat.vercel.app','https://i-note-book-pi.vercel.app'],
+    origin: ['http://localhost:3000','https://i-note-book-wheat.vercel.app','https://i-note-book-pi.vercel.app', 'https://i-notebook-6e9cja2bc-rupali-s-projects.vercel.app/',"https://i-notebook-lilac.vercel.app/",'https://i-note-book-pink.vercel.app/'],
      // Update with your frontend origin'
     credentials: true,
 }));
